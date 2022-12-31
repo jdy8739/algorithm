@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(m, product) {
+                const totalSum = product.reduce((a, b) => {
+                    return a + (b[0] + b[1]);
+                }, 0);
+                let min = totalSum;
+                let targetIndex = 0;
+                for (let i=0; i<product.length; i++) {
+                    const discounted = (product[i][0] / 2);
+                    const assumedSum = totalSum - discounted;
+                    if (min > assumedSum) {
+                        min = assumedSum;
+                        targetIndex = i;
+                    }
+                }
+                product[targetIndex][0] /= 2;
+                product.sort((a, b) => {
+                    return (a[0] + a[1]) - (b[0] + b[1]);
+                });
+                let answer = 0;
+                while (m >= 0) {
+                    const price = product[answer][0] + product[answer][1];
+                    m -= price;
+                    answer ++;
+                }
+                return answer - 1;
+            }
+            let arr = [[6, 6], [2, 2], [4, 3], [4, 5], [10, 3]];
+            console.log(solution(28, arr));
+        </script>
+    </body>
+</html>
