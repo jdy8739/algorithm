@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr1, arr2){
+                arr1.sort((a, b) => a - b);
+                arr2.sort((a, b) => a - b);
+                const answer = [];
+                const totalIdx = arr1.length + arr2.length;
+                let aIdx = 0;
+                let bIdx = 0;
+                for (let i=0; i<totalIdx; i++) {
+                    if (arr1[aIdx] === arr2[bIdx]) {
+                        answer.push(arr1[aIdx]);
+                        aIdx ++;
+                        bIdx ++;
+                    } else if (arr1[aIdx] <= arr2[bIdx]) {
+                        aIdx ++;
+                    } else {
+                        bIdx ++;
+                    }
+                }
+                return answer;
+            }
+            let a = [1, 3, 9, 5, 2];
+            let b = [3, 2, 5, 7, 8];
+            console.log(solution(a, b));
+        </script>
+    </body>
+</html>
