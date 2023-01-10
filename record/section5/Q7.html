@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(str1, str2) {
+                const map1 = new Map();
+                const map2 = new Map();
+                for (let i=0; i<str1.length; i++) {
+                    const a = str1[i];
+                    const b = str2[i];
+                    modulateMap(map1, a);
+                    modulateMap(map1, b);
+                    modulateMap(map2, a);
+                    modulateMap(map2, b);
+                }
+                return (map1.size === 0 && map2.size === 0) ? "YES" : "NO";
+            }
+            function modulateMap(map, key) {
+                if (map.has(key)) {
+                    const bElem = map.get(key);
+                    if (bElem === 1) map.delete(key);
+                    else map.set(key, bElem - 1);
+                } else map.set(key, 1);
+            }
+            let a = "AbaAeCe";
+            let b = "baeeACA";
+            console.log(solution(a, b));
+        </script>
+    </body>
+</html>

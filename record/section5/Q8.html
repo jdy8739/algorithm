@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s, t) {
+                let answer = 0;
+                const map = new Map();
+                for (const x of t) {
+                    if (map.has(x)) map.set(x, map.get(x) + 1);
+                    else map.set(x, 1);
+                }
+                let left = 0;
+                let right = t.length - 1;
+                let arr = [];
+                for (let i=0; i<t.length; i++) arr.push(s[i]);
+                const limit = s.length - right
+                for (left=0; left<limit; left++) {
+                    const newMap = new Map(map)
+                    for (let j=0; j<arr.length; j++) {
+                        const key = arr[j];
+                        if (newMap.has(key)) {
+                            const elem = newMap.get(key);
+                            if (elem === 1) newMap.delete(key);
+                            else newMap.set(key, elem - 1);
+                        }
+                    }
+                    if (newMap.size === 0) answer ++;
+                    arr.shift();
+                    arr.push(s[++right]);
+                }
+                return answer;
+            }  
+            let a = "bacaAacba";
+            let b = "abc";
+            console.log(solution(a, b));
+        </script>
+    </body>
+</html>
