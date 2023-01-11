@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s) {
+                /*
+                먼저 푼 답. number를 사용하고 적은 연산이 사용되는 더하기, 빼기 로직이 쓰이기 때문에 아래의 답보다 효율성은 더 좋음.
+                const OPEN = "(";
+                const CLOSE = ")";
+                if (s[0] === CLOSE || s[s.length - 1] === OPEN) return "NO";
+                let count = 0;
+                for (let i=0; i<s.length; i++) {
+                    if (s[i] === OPEN) count ++;
+                    else count --;
+                    if (count < 0) return "NO";
+                }
+                return count === 0 ? "YES" : "NO";
+                */
+                /* stack을 활용하여 푼 답. */
+                const OPEN = "(";
+                const CLOSE = ")";
+                if (s[0] === CLOSE || s[s.length - 1] === OPEN) return "NO";
+                const STACK = [];
+                for (let i=0; i<s.length; i++) {
+                    const elem = s[i];
+                    if (elem === OPEN) STACK.push(OPEN);
+                    else {
+                        if (STACK[STACK.length - 1] === OPEN) STACK.pop();
+                        else return "NO"; 
+                    }
+                }
+                return (STACK.length === 0) ? "YES" : "NO";
+            }
+            let a = "(()(()))(()";
+            console.log(solution(a));
+        </script>
+    </body>
+</html>
