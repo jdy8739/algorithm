@@ -5,6 +5,7 @@
     </head>
     <body>
         <script>
+            /* 내가 푼 답 */
             function solution(board, moves) {
                 let answer = 0;
                 const row = [];
@@ -25,12 +26,31 @@
                         if (target === pickedDolls[len - 1]) {
                             pickedDolls.pop();
                             answer += 2;
-                        }
-                        else pickedDolls.push(target);
+                        } else pickedDolls.push(target);
                     }
                 }
                 return answer;
             }
+            /* 모범답안
+            function solution(board, moves) {
+                let answer = 0;
+                const pickedDolls = [];
+                moves.forEach(element => {
+                    for (let i=0; i<board.length; i++) {
+                        const target = board[i][element - 1];
+                        if (target === 0) continue;
+                        else {
+                            if (target === pickedDolls[pickedDolls.length - 1]) {
+                                pickedDolls.pop();
+                                answer += 2;
+                            } else pickedDolls.push(target);
+                            board[i][element - 1] = 0;
+                            break;
+                        } 
+                    }
+                });
+                return answer;
+            } */
             let a = [[0,0,0,0,0],
                    [0,0,1,0,3],
                    [0,2,5,0,1],
