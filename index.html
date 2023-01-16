@@ -5,21 +5,7 @@
     </head>
     <body>
         <script>
-            function solution(s) {
-                const OPEN = "(";
-                const CLOSE = ")";
-                let count = 0;
-                let arr = [];
-                for (let i=0; i<s.length; i++) {
-                    const elem = s[i];
-                    if (elem === OPEN) count ++;
-                    else if (elem === CLOSE) count --;
-                    else if (count === 0) arr.push(elem);
-                }
-                return arr.join("");
-            }
-            let str = "(A(BC)D)EF(G(H)(IJ)K)LM(N)";
-            console.log(solution(str));
+            
         </script>
     </body>
 </html>
