@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function calc(x, y, sign) {
+                if (sign === "+") return Number(x) + Number(y);
+                if (sign === "-") return Number(x) - Number(y);
+                if (sign === "*") return Number(x) * Number(y);
+                if (sign === "/") return Number(x) / Number(y);
+            }
+            function solution(s) {  
+                const chars = s.split("");
+                for (let i=0; i<chars.length; i++) {
+                    if (window.isNaN(chars[i])) {
+                        const calcedNumber = calc(chars[i - 2], chars[i - 1], chars[i]);
+                        chars.splice(i - 2, 3, calcedNumber);
+                        i -= 2;
+                    }
+                }
+                return Number(chars.join(""));
+            }
+            let str = "352+*9-";
+            console.log(solution(str));
+        </script>
+    </body>
+</html>
