@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            /* 내가 푼 답
+            function solution(s) {
+                const OPEN = "(";
+                const CLOSE = ")";
+                let lines = 0;
+                let sticks = 0;
+                for (let i=0; i<s.length; i++) {
+                    const el = s[i];
+                    const prevEl = s[i - 1];
+                    const nextEl = s[i + 1];
+                    if (el === OPEN) {
+                        if (nextEl === CLOSE) {
+                            sticks = sticks + lines;
+                            console.log(sticks);
+                        } else if (nextEl === OPEN) {
+                            sticks ++;
+                            lines ++;
+                        }
+                    } else if (el === CLOSE) {
+                        if (prevEl === CLOSE) lines --;
+                    }
+                }
+                return sticks;
+            } */
+            /* 모범답안 */
+            function solution(s) {
+                const OPEN = "(";
+                const CLOSE = ")";
+                const STACK = [];
+                let answer = 0;
+                for (let i=0; i<s.length; i++) {
+                    const el = s[i];
+                    if (el === OPEN) {
+                        STACK.push(el);
+                        if (s[i + 1] !== CLOSE) answer ++;
+                    }
+                    else {
+                        STACK.pop();
+                        if (s[i - 1] === OPEN) answer += STACK.length;
+                    }
+                }
+                return answer;
+            }
+            
+            let a = "()(((()())(())()))(())";
+            let b = "(((()(()()))(())()))(()())";
+            console.log(solution(a));
+        </script>
+    </body>
+</html>
