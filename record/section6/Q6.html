@@ -5,6 +5,24 @@
     </head>
     <body>
         <script>
+            /* 
+            function solution(n, k) {
+                const arr = new Array();
+                for (let i=1; i<=n; i++) arr.push(i);
+                let count = 0;
+                let index = 0;
+                while (arr.length > 1) {
+                    if (index === arr.length) index = 1;
+                    else index ++;
+                    count ++;
+                    if (count % k === 0) {
+                        arr.splice((index - 1), 1);
+                        index --;
+                    }
+                }
+                return arr[0];
+            } */
+            /* 모범 답안. QUEUE 사용과 배열 만드는 법에 주목. */
             function solution(n, k) {
                 const QUEUE = Array.from({ length: n }, (v, i) => i + 1);
                 let answer;
