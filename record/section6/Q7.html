@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(need, plan) {
+                const arr = need.split("");
+                for (const x of plan) {
+                    if (arr[0] === x) arr.shift();
+                }
+                return arr.length === 0 ? "YES" : "NO";
+            }
+
+            let a = "CBA";
+            let b = "CBDAGE";
+            console.log(solution(a, b));
+        </script>
+    </body>
+</html>
