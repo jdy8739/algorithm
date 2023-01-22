@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr) {
+                let isBiggerThanNext;
+                let count  = arr.length;
+                let index;
+                for (let i=0; i<arr.length; i++) {
+                    index = 0;
+                    while (index < count) {
+                        if (arr[index] > arr[index + 1]) {
+                            // 몰랐던 문법..
+                            [arr[index], arr[index + 1]] = [arr[index + 1], arr[index]];
+                        }
+                        index ++;
+                    }
+                    count --;
+                }
+                return arr;
+            }
+
+            let arr = [13, 5, 11, 7, 23, 1, 15];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>

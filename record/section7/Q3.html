@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function arrangeNumbers(fstEl, sndEl) {
+                if (Math.abs(fstEl) === fstEl || Math.abs(sndEl) === sndEl)
+                    return fstEl > sndEl;
+                else return Math.abs(fstEl) > Math.abs(sndEl);
+            }
+            function solution(arr) {
+                let isBiggerThanNext;
+                let count  = arr.length;
+                let index;
+                for (let i=0; i<arr.length; i++) {
+                    index = 0;
+                    while (index < count) {
+                        const fstEl = arr[index];
+                        const sndEl = arr[index + 1];
+                        if (arrangeNumbers(fstEl, sndEl)) {
+                            [arr[index], arr[index + 1]] = [arr[index + 1], arr[index]];
+                        }
+                        index ++;
+                    }
+                    count --;
+                }
+                return arr;
+            }
+
+            let arr = [1, 2, 3, -3, -2, 5, 6, -6];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>
