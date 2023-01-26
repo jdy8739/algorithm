@@ -12,19 +12,19 @@
                 })
                 const arr = [];
                 let max = 0;
-                let answer = 0;
+                let people = 0;
                 for (let i=0; i<times.length; i++) {
-                    answer ++;
+                    people ++;
                     for (let j=arr.length - 1; j>=0; j--) {
                         if (arr[j][1] <= times[i][0]) {
-                            answer --;
+                            people --;
                             arr.splice(j, 1);
                         }
                     }
                     arr.push(times[i]);
-                    if (answer > max) max = answer;
+                    if (people > max) max = people;
                 }
-                return answer;
+                return max;
             }
 
             let arr = [[14, 18], [12, 15], [15, 20], [20, 30], [5, 14]];
