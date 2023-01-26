@@ -6,6 +6,7 @@
     <body>
         <script>
             function solution(times) {
+                /* 처음에 푼 답.
                 times.sort((a, b) => {
                     if (a[0] === b[0]) return a[1] - b[1];
                     else return a[0] - b[0];
@@ -22,6 +23,25 @@
                         }
                     }
                     arr.push(times[i]);
+                    if (people > max) max = people;
+                }
+                return max; */
+                
+                /* 모범 답안. 2중 for문 없이 한 번의 순회에 답 찾기 가능. */
+                const arr = [];
+                for (const [a, b] of times) {
+                    arr.push({ time: a, isLeave: false });
+                    arr.push({ time: b, isLeave: true });
+                };
+                arr.sort((a, b) => {
+                    if (a.time === b.time) return a.isLeave ? -1 : 1;
+                    else return a.time - b.time;
+                });
+                let people = 0;
+                let max = 0;
+                for (const { isLeave } of arr) {
+                    if (!isLeave) people ++;
+                    else people --;
                     if (people > max) max = people;
                 }
                 return max;
