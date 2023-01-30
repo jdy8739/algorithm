@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(target, arr) {
+                arr.sort((a, b) => a - b);
+                let start = 0;
+                let end = arr.length;
+                let answer;
+                while (true) {
+                    let gap = end - start;
+                    let midIdx = start + Math.floor(gap / 2);
+                    const mid = arr[midIdx];
+                    if (gap === 1) {
+                        answer = end;
+                        break;
+                    }
+                    if (target === mid) {
+                        answer = midIdx + 1;
+                        break;
+                    } else if (target > mid) {
+                        start = midIdx;
+                    } else if (target < mid) {
+                        end = midIdx;
+                    }
+                }
+                return answer;
+            }
+
+            let arr = [23, 87, 65, 12, 57, 32, 99, 81];
+            console.log(solution(32, arr));
+        </script>
+    </body>
+</html>
