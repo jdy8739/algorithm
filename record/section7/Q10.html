@@ -10,14 +10,11 @@
                 let start = 0;
                 let end = arr.length;
                 let answer;
-                while (true) {
+                let count = 0;
+                while (count++ < arr.length) {
                     let gap = end - start;
                     let midIdx = start + Math.floor(gap / 2);
                     const mid = arr[midIdx];
-                    if (gap === 1) {
-                        answer = end;
-                        break;
-                    }
                     if (target === mid) {
                         answer = midIdx + 1;
                         break;
