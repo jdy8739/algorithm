@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function foo(arr) {
+                /* 최대값 구하기 (송아지)
+                핵심은 먼저 발생하는 이벤트의 값을 기억해두고 i가 증가함에 따라 비교해 주면 된다.
+                반복문을 두 번 돌지 않아 효율적임.
+                */
+                let answer = -1;
+                let max = arr[0];
+                for (let i=1; i<arr.length; i++) {
+                    const gap = max - arr[i];
+                    if (answer < gap) answer = gap;
+                    if (arr[i] > max) max = arr[i];
+                }
+                return answer;
+            }
+            const arr1 = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3];
+            const arr2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            const arr3 = [4, 1, 7, 6, 5, 2];
+            console.log(foo(arr1));
+        </script>
+    </body>
+</html>
