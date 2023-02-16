@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            /* 작은 부분 수열의 수 문제 */
+            function solution(t, p) {
+                var answer = 0;
+                const len = t.length - p.length;
+                const arr = t.split("");
+                for (let i=0; i<len + 1; i++) {
+                    const value = Number(arr.slice(i, i + p.length).join(""));
+                    if (value <= p) answer ++;
+                }
+                return answer;
+            }
+        </script>
+    </body>
+</html>
