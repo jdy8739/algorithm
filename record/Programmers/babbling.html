@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(babbling) {
+                var answer = 0;
+                const regex = /[a-z]/;
+                const arr = ["aya", "ye", "woo", "ma"];
+                for (let i=0; i<babbling.length; i++) {
+                    let target = babbling[i];
+                    for (let j=0; j<arr.length; j++) {
+                        const indexOf = target.indexOf(arr[j]);
+                        if (indexOf > -1) {
+                            const li = target.split("");
+                            li.splice(indexOf, arr[j].length, ".");
+                            target = li.join("");
+                        }
+                    }
+                    if (!regex.test(target)) answer ++;
+                }
+                return answer;
+            }
+        </script>
+    </body>
+</html>
