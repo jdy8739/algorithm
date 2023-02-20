@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(c, arr) {
+                let max = 0;
+                const tmpArr = Array.from({ length: arr.length }, () => 0);
+                arr.unshift(0);
+                function DFS(m) {
+                    if (arr.length + 1 === m) {
+                        const dfsArr = [];
+                        for (let i=0; i<tmpArr.length; i++) {
+                            if (tmpArr[i] !== 0) dfsArr.push(arr[i]);
+                        }
+                        const tmpMax = dfsArr.reduce((a, b) => a + b, 0);
+                        if (tmpMax > max && tmpMax <= c) max = tmpMax;
+                    } else {
+                        tmpArr[m] = 1;
+                        DFS(m + 1);
+                        tmpArr[m] = 0;
+                        DFS(m + 1);
+                    }
+                }
+                DFS(1);
+                return max;
+            }
+
+            let arr = [81, 58, 42, 33, 61];
+            console.log(solution(259, arr));
+        </script>
+    </body>
+</html>
